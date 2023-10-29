@@ -126,14 +126,19 @@ class MyApp extends StatelessWidget {
                 children: [
 
                    buildProdutoContainer(
-                    'imagem',
-                    'grosso',
-                    '50.00',
+                    'https://cdn.awsli.com.br/300x300/2331/2331833/produto/179228047/31530d5eff.jpg',
+                    'Geladeira Gamer Com Led',
+                    '3250.00',
                   ),
                     buildProdutoContainer(
+                    'https://ae01.alicdn.com/kf/HTB1djV4bwmTBuNjy1Xbq6yMrVXaf.jpg_640x640Q90.jpg_.webp',
+                    'Xbox One Do Godi Of Uar ',
+                    '4550.00',
+                  ),
+                     buildProdutoContainer(
                     'imagem',
-                    'grosso',
-                    '50.00',
+                    'Estatos Unidos Da America ',
+                    '1,999,999,999,999.00',
                   ),
                   
                   
@@ -278,7 +283,7 @@ Widget buildProdutoContainer(String imagem, String nomeProduto, String preco) {
                         primary: Colors.white,
                       ),
                       onPressed: () {
-                        // Implemente a ação ao pressionar "Adicionar novo produto" aqui
+                      
                       },
                       child: Text('Adicionar novo produto'),
                     ),
@@ -296,7 +301,7 @@ Widget buildProdutoContainer(String imagem, String nomeProduto, String preco) {
                   height: 30.0,
                   child: ElevatedButton(
                     onPressed: () {
-                      // Implemente a ação para o primeiro botão "Enviar para o carrinho" aqui
+                     
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Color(0xFFB10C43),
@@ -306,6 +311,20 @@ Widget buildProdutoContainer(String imagem, String nomeProduto, String preco) {
                   ),
                 ),
                 Container(
+                  width: 300.0,
+                  height: 30.0,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // Implemente a ação para o segundo botão "Enviar para o carrinho" aqui
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xFFB10C43),
+                      onPrimary: Colors.white,
+                    ),
+                    child: Text('Enviar para o carrinho'),
+                  ),
+                ),
+                 Container(
                   width: 300.0,
                   height: 30.0,
                   child: ElevatedButton(
