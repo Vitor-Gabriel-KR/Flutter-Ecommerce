@@ -21,6 +21,7 @@ class CarrinhoScreen extends StatefulWidget {
 class _CarrinhoScreenState extends State<CarrinhoScreen> {
   List<CarrinhoIntel> carrinhos = [];
   List<bool> buttonEnabled = [true, true, true];
+  bool compraRealizada = false;
 
   void adicionarCarrinho(String nome, String preco, int index) {
     setState(() {
@@ -36,11 +37,36 @@ class _CarrinhoScreenState extends State<CarrinhoScreen> {
     });
   }
 
+  void mostrarPopOut() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Parabéns!'),
+          content: Text('Você comprou o/os itens com sucesso.'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                setState(() {
+                  compraRealizada = true;
+                });
+                Navigator.of(context).pop();
+              },
+              child: Text('Fechar'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFEBDFCC),
       appBar: AppBar(
-        title: Text('Toggle Carrinho Example'),
+        title: Text('Carrinho'),
+        backgroundColor: Color(0xFFB10C43),
       ),
       body: Center(
         child: Column(
@@ -50,7 +76,6 @@ class _CarrinhoScreenState extends State<CarrinhoScreen> {
               CarrinhoIntelWidget(carrinho: carrinho, onExcluir: () {
                 removerCarrinho(carrinho.key, carrinho.index);
               }),
-              
             ],
             ElevatedButton(
               onPressed: buttonEnabled[0]
@@ -58,7 +83,17 @@ class _CarrinhoScreenState extends State<CarrinhoScreen> {
                       adicionarCarrinho("Geladeira Gamer Com Led", "Preço 3250.00", 0);
                     }
                   : null,
-              child: Text('Botão 1'),
+              child: Text('Mostrar Produto 1'),
+              style: ElevatedButton.styleFrom(
+                primary: Color(0xFFB10C43),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+              ),
+            ),
+            Container(
+              height: 12.0,
+              color: Color(0xFFEBDFCC),
             ),
             ElevatedButton(
               onPressed: buttonEnabled[1]
@@ -66,7 +101,17 @@ class _CarrinhoScreenState extends State<CarrinhoScreen> {
                       adicionarCarrinho("Xbox One Do Godi Of Uar", "Preço 4550.00", 1);
                     }
                   : null,
-              child: Text('Botão 2'),
+              child: Text('Mostrar Produto 2'),
+              style: ElevatedButton.styleFrom(
+                primary: Color(0xFFB10C43),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+              ),
+            ),
+            Container(
+              height: 12.0,
+              color: Color(0xFFEBDFCC),
             ),
             ElevatedButton(
               onPressed: buttonEnabled[2]
@@ -74,7 +119,24 @@ class _CarrinhoScreenState extends State<CarrinhoScreen> {
                       adicionarCarrinho("Estatos Unidos Da America", "1,999,999,999,999.00", 2);
                     }
                   : null,
-              child: Text('Botão 3'),
+              child: Text('Mostrar Produto 3'),
+              style: ElevatedButton.styleFrom(
+                primary: Color(0xFFB10C43),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+              ),
+            ),
+            SizedBox(height: 24.0),
+            ElevatedButton(
+              onPressed: compraRealizada ? null : mostrarPopOut,
+              child: Text('Realizar Compra'),
+              style: ElevatedButton.styleFrom(
+                primary: Colors.green, 
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+              ),
             ),
           ],
         ),

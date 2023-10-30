@@ -138,32 +138,25 @@ class MyApp extends StatelessWidget {
                
               buildFaixa(),
 
-              buildcarrinhotext(),
-               
-              buildFaixa(),
-              
-              buildCarrinhoIntel('Puteiro', '19.99', context),
-              buildCarrinhoIntel('Nome do Produto 2', '29.99', context),
-
+             
 
 
             ],
           ),
         ),
         
-       floatingActionButton: FloatingActionButton(
-          onPressed: () {
-
-          },
-          child: Icon(Icons.shopping_cart),
-          backgroundColor: Color(0xFFB10C43),
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+         floatingActionButton: FloatingActionButton(
+        onPressed: () {
+         
+          runApp(CarrinhoScreen());
+        },
+        child: Icon(Icons.shopping_cart),
+        backgroundColor: Color(0xFFB10C43),
       ),
+      )
     );
   }
 }
-
 
 
 Widget buildProdutoContainer(String imagem, String nomeProduto, String preco) {
