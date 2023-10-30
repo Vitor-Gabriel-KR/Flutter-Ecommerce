@@ -116,7 +116,7 @@ class _CarrinhoScreenState extends State<CarrinhoScreen> {
             ElevatedButton(
               onPressed: buttonEnabled[2]
                   ? () {
-                      adicionarCarrinho("Estatos Unidos Da America", "1,999,999,999,999.00", 2);
+                      adicionarCarrinho("Planeta Terra", "1,999,999,999,999.00", 2);
                     }
                   : null,
               child: Text('Mostrar Produto 3'),
@@ -132,7 +132,7 @@ class _CarrinhoScreenState extends State<CarrinhoScreen> {
               onPressed: compraRealizada ? null : mostrarPopOut,
               child: Text('Realizar Compra'),
               style: ElevatedButton.styleFrom(
-                primary: Colors.green, 
+                primary: Colors.green,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
                 ),
