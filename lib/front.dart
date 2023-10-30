@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
+import 'carrinho.dart';
 
 void main() {
   runApp(MyApp());
 
 }
-
-
-
-
 
 
 
@@ -39,10 +36,7 @@ class MyApp extends StatelessWidget {
         body: SingleChildScrollView( // Adicione um SingleChildScrollView aqui
           child: Column(
             children: [
-              Container(
-                height: 16.0,
-                color: Color(0xFFEBDFCC),
-              ),
+               buildFaixa(),
               Container(
                 height: 32.0,
                 color: Color(0xFFB10C43),
@@ -57,10 +51,7 @@ class MyApp extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                height: 16.0,
-                color: Color(0xFFEBDFCC),
-              ),
+               buildFaixa(),
               Container(
                 color: Color(0xFFEBDFCC),
                 child: Center(
@@ -74,11 +65,8 @@ class MyApp extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                height: 16.0,
-                color: Color(0xFFEBDFCC),
-              ),
-
+              buildFaixa(),
+              
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -99,11 +87,9 @@ class MyApp extends StatelessWidget {
                   buildAdicionarNovoProduto()
 
                 ],
+                
               ),
-              Container(
-                height: 16.0,
-                color: Color(0xFFEBDFCC),
-              ),
+               buildFaixa(),
               Container(
                 color: Color(0xFFEBDFCC),
                 child: Center(
@@ -117,10 +103,7 @@ class MyApp extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                height: 16.0,
-                color: Color(0xFFEBDFCC),
-              ),
+               buildFaixa(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -142,54 +125,27 @@ class MyApp extends StatelessWidget {
                   ),
                   
                   
-                  
                 ],
                 
               ),
 
              
-               Container(
-                height: 32.0,
-                color: Color(0xFFEBDFCC),
-                
-              ),
+              buildFaixa(),
 
               buildEnviarParaCarrinho(),
 
-               Container(
-                height: 32.0,
-                color: Color(0xFFEBDFCC),
-                
-              ),
+              buildFaixa(),
                
-               Container(
-                height: 32.0,
-                color: Color(0xFFEBDFCC),
-                
-              ),
-              Container(
-                color: Color(0xFFEBDFCC),
-                child: Center(
-                  child: Text(
-                    'Carrinho',
-                    style: TextStyle(
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-                
-              ),
+              buildFaixa(),
+
+              buildcarrinhotext(),
                
-               Container(
-                height: 32.0,
-                color: Color(0xFFEBDFCC),
-                
-              ),
+              buildFaixa(),
               
-         buildCarrinhoIntel('Puteiro', '19.99', context),
-         buildCarrinhoIntel('Nome do Produto 2', '29.99', context),
+              buildCarrinhoIntel('Puteiro', '19.99', context),
+              buildCarrinhoIntel('Nome do Produto 2', '29.99', context),
+
+
 
             ],
           ),
@@ -406,4 +362,31 @@ Widget buildProdutoContainer(String imagem, String nomeProduto, String preco) {
                 ),
               ],
             );
+          }
+
+
+          Widget buildFaixa(){
+            return  Container(
+                height: 32.0,
+                color: Color(0xFFEBDFCC),
+                
+              );
+
+          }
+
+          Widget buildcarrinhotext(){
+              return Container(
+                color: Color(0xFFEBDFCC),
+                child: Center(
+                  child: Text(
+                    'Carrinho',
+                    style: TextStyle(
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+                
+              );
           }
