@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(CarrinhoFinal());
-}
-
 class CarrinhoFinal extends StatelessWidget {
+  const CarrinhoFinal({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: CarrinhoScreen(),
     );
   }
 }
 
 class CarrinhoScreen extends StatefulWidget {
+  const CarrinhoScreen({super.key});
+
   @override
   _CarrinhoScreenState createState() => _CarrinhoScreenState();
 }
@@ -42,8 +42,8 @@ class _CarrinhoScreenState extends State<CarrinhoScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Parabéns!'),
-          content: Text('Você comprou o/os itens com sucesso.'),
+          title: const Text('Parabéns!'),
+          content: const Text('Você comprou o/os itens com sucesso.'),
           actions: [
             TextButton(
               onPressed: () {
@@ -52,7 +52,7 @@ class _CarrinhoScreenState extends State<CarrinhoScreen> {
                 });
                 Navigator.of(context).pop();
               },
-              child: Text('Fechar'),
+              child: const Text('Fechar'),
             ),
           ],
         );
@@ -63,10 +63,10 @@ class _CarrinhoScreenState extends State<CarrinhoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFEBDFCC),
+      backgroundColor: const Color(0xFFEBDFCC),
       appBar: AppBar(
-        title: Text('Carrinho'),
-        backgroundColor: Color(0xFFB10C43),
+        title: const Text('Carrinho'),
+        backgroundColor: const Color(0xFFB10C43),
       ),
       body: Center(
         child: Column(
@@ -83,17 +83,17 @@ class _CarrinhoScreenState extends State<CarrinhoScreen> {
                       adicionarCarrinho("Geladeira Gamer Com Led", "Preço 3250.00", 0);
                     }
                   : null,
-              child: Text('Mostrar Produto 1'),
               style: ElevatedButton.styleFrom(
-                primary: Color(0xFFB10C43),
+                primary: const Color(0xFFB10C43),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
                 ),
               ),
+              child: const Text('Mostrar Produto 1'),
             ),
             Container(
               height: 12.0,
-              color: Color(0xFFEBDFCC),
+              color: const Color(0xFFEBDFCC),
             ),
             ElevatedButton(
               onPressed: buttonEnabled[1]
@@ -101,17 +101,17 @@ class _CarrinhoScreenState extends State<CarrinhoScreen> {
                       adicionarCarrinho("Xbox One Do Godi Of Uar", "Preço 4550.00", 1);
                     }
                   : null,
-              child: Text('Mostrar Produto 2'),
               style: ElevatedButton.styleFrom(
-                primary: Color(0xFFB10C43),
+                primary: const Color(0xFFB10C43),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
                 ),
               ),
+              child: const Text('Mostrar Produto 2'),
             ),
             Container(
               height: 12.0,
-              color: Color(0xFFEBDFCC),
+              color: const Color(0xFFEBDFCC),
             ),
             ElevatedButton(
               onPressed: buttonEnabled[2]
@@ -119,24 +119,24 @@ class _CarrinhoScreenState extends State<CarrinhoScreen> {
                       adicionarCarrinho("Planeta Terra", "1,999,999,999,999.00", 2);
                     }
                   : null,
-              child: Text('Mostrar Produto 3'),
               style: ElevatedButton.styleFrom(
-                primary: Color(0xFFB10C43),
+                primary: const Color(0xFFB10C43),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
                 ),
               ),
+              child: const Text('Mostrar Produto 3'),
             ),
-            SizedBox(height: 24.0),
+            const SizedBox(height: 24.0),
             ElevatedButton(
               onPressed: compraRealizada ? null : mostrarPopOut,
-              child: Text('Realizar Compra'),
               style: ElevatedButton.styleFrom(
                 primary: Colors.green,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
                 ),
               ),
+              child: const Text('Realizar Compra'),
             ),
           ],
         ),
@@ -149,7 +149,7 @@ class CarrinhoIntelWidget extends StatelessWidget {
   final CarrinhoIntel carrinho;
   final VoidCallback onExcluir;
 
-  CarrinhoIntelWidget({required this.carrinho, required this.onExcluir});
+  const CarrinhoIntelWidget({super.key, required this.carrinho, required this.onExcluir});
 
   @override
   Widget build(BuildContext context) {
@@ -160,9 +160,9 @@ class CarrinhoIntelWidget extends StatelessWidget {
           width: MediaQuery.of(context).size.width / 2,
           height: 100,
           decoration: BoxDecoration(
-            color: Color(0xFFEBDFCC),
+            color: const Color(0xFFEBDFCC),
             border: Border.all(
-              color: Color(0xFFB10C43),
+              color: const Color(0xFFB10C43),
               width: 2.0,
             ),
             borderRadius: BorderRadius.circular(20),
@@ -171,21 +171,21 @@ class CarrinhoIntelWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
                       carrinho.nome,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
                       'R\$ ${carrinho.preco}',
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 16,
                       ),
                     ),
@@ -193,14 +193,14 @@ class CarrinhoIntelWidget extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 child: ElevatedButton(
                   onPressed: onExcluir,
                   style: ElevatedButton.styleFrom(
-                    primary: Color(0xFFB10C43),
-                    shape: CircleBorder(),
+                    primary: const Color(0xFFB10C43),
+                    shape: const CircleBorder(),
                   ),
-                  child: Icon(
+                  child: const Icon(
                     Icons.delete,
                     color: Colors.white,
                   ),
@@ -211,7 +211,7 @@ class CarrinhoIntelWidget extends StatelessWidget {
         ),
         Container(
           height: 32.0,
-          color: Color(0xFFEBDFCC),
+          color: const Color(0xFFEBDFCC),
         ),
       ],
     );
