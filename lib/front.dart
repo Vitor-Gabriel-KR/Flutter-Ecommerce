@@ -2,11 +2,34 @@ import 'package:flutter/material.dart';
 import 'carrinho.dart';
 import 'addprojeto.dart';
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+
+  List<bool> buttonEnabled = [true, true, true];
+
+  @override
   Widget build(BuildContext context) {
+    List<CarrinhoIntel> carrinhos = [];
+
+  void adicionarCarrinho(String nome, String preco, int index) {
+    setState(() {
+      carrinhos.add(CarrinhoIntel(key: UniqueKey(), nome: nome, preco: preco, index: index));
+      buttonEnabled[index] = false;
+    });
+  }
+
+  void removerCarrinho(Key key, int index) {
+    setState(() {
+      carrinhos.removeWhere((carrinho) => carrinho.key == key);
+      buttonEnabled[index] = true;
+    });
+  }
     return MaterialApp(
       home: Scaffold(
         backgroundColor: const Color(0xFFEBDFCC),
@@ -60,7 +83,7 @@ class MyApp extends StatelessWidget {
                     'Cd Original Do Senhor Dos Aneis',
                     '25.550.00',
                   ),
-                  buildAdicionarNovoProduto2()
+                  ProductScreen()
 
                 ],
               ),
@@ -108,7 +131,7 @@ class MyApp extends StatelessWidget {
                     height: 30.0,
                     child: ElevatedButton(
                       onPressed: () {
-                        //
+                        //adicionarCarrinho()
                       },
                       style: ElevatedButton.styleFrom(
                         primary: const Color(0xFFB10C43),
@@ -157,7 +180,7 @@ class MyApp extends StatelessWidget {
             return FloatingActionButton(
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const CarrinhoScreen(),
+                  builder: (context) =>  CarrinhoScreen(carrinhos:carrinhos),
                 ));
               },
               backgroundColor: Color(0xFFB10C43),
@@ -205,48 +228,6 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
-}
-
-Widget buildAdicionarNovoProduto2() {
-  return Container(
-    height: 300.0,
-    width: 300.0,
-    decoration: BoxDecoration(
-      color: const Color(0xFFEBDFCC),
-      borderRadius: BorderRadius.circular(20.0),
-    ),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        SizedBox(
-          width: 225,
-          height: 225,
-          child: ElevatedButton(
-            onPressed: () {},
-            style: ElevatedButton.styleFrom(
-              primary: const Color(0xFFEBDFCC),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20.0),
-              ),
-            ),
-            child: const Icon(
-              Icons.add,
-              color: Colors.white,
-              size: 60,
-            ),
-          ),
-        ),
-        const SizedBox(height: 10),
-        TextButton(
-          style: TextButton.styleFrom(
-            primary: Colors.white,
-          ),
-          onPressed: () {},
-          child: const Text('Adicionar novo produto'),
-        ),
-      ],
-    ),
-  );
 }
 
 Widget buildEnviarParaCarrinho() {
