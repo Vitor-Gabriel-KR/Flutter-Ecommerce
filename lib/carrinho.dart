@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'front.dart';
 
 class CarrinhoScreen extends StatefulWidget {
   final List<CarrinhoIntel> carrinhos;
   final List<bool> buttonEnablede;
 
-  CarrinhoScreen({Key? key, required this.carrinhos, required this.buttonEnablede}) : super(key: key);
+  CarrinhoScreen(
+      {Key? key, required this.carrinhos, required this.buttonEnablede})
+      : super(key: key);
 
   @override
   _CarrinhoScreenState createState() => _CarrinhoScreenState(buttonEnablede);
@@ -25,10 +26,10 @@ class _CarrinhoScreenState extends State<CarrinhoScreen> {
     buttonEnabled = List.from(widget.buttonEnablede);
   }
 
-
-void adicionarCarrinho(String nome, String preco, int index) {
+  void adicionarCarrinho(String nome, String preco, int index) {
     setState(() {
-      carrinhos.add(CarrinhoIntel(key: UniqueKey(), nome: nome, preco: preco, index: index));
+      carrinhos.add(CarrinhoIntel(
+          key: UniqueKey(), nome: nome, preco: preco, index: index));
       buttonEnabled[index] = false;
     });
   }
@@ -40,58 +41,56 @@ void adicionarCarrinho(String nome, String preco, int index) {
     });
   }
 
-Widget buildbotao0(){
-    return 
-      ElevatedButton(
-              onPressed: buttonEnabled[0]
-                  ? () {
-                      adicionarCarrinho("Geladeira Gamer Com Led", "Preço 3250.00", 0);
-                    }
-                  : null,
-              style: ElevatedButton.styleFrom(
-                primary: const Color(0xFFB10C43),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-              ),
-              child: const Text('Mostrar Produto 1'),
-            );
-}
-Widget buildbotao1(){
-  return 
-  ElevatedButton(
-              onPressed: buttonEnabled[1]
-                  ? () {
-                      adicionarCarrinho("Xbox One Do Godi Of Uar", "Preço 4550.00", 1);
-                    }
-                  : null,
-              style: ElevatedButton.styleFrom(
-                primary: const Color(0xFFB10C43),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-              ),
-              child: const Text('Mostrar Produto 2'),
-            );
-}
-Widget buildbotao2(){
-  return 
-  ElevatedButton(
-              onPressed: buttonEnabled[2]
-                  ? () {
-                      adicionarCarrinho("Planeta Terra", "1,999,999,999,999.00", 2);
-                    }
-                  : null,
-              style: ElevatedButton.styleFrom(
-                primary: const Color(0xFFB10C43),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-              ),
-              child: const Text('Mostrar Produto 3'),
-            );
-}
+  Widget buildbotao0() {
+    return ElevatedButton(
+      onPressed: buttonEnabled[0]
+          ? () {
+              adicionarCarrinho("Geladeira Gamer Com Led", "Preço 3250.00", 0);
+            }
+          : null,
+      style: ElevatedButton.styleFrom(
+        primary: const Color(0xFFB10C43),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+      ),
+      child: const Text('Mostrar Produto 1'),
+    );
+  }
 
+  Widget buildbotao1() {
+    return ElevatedButton(
+      onPressed: buttonEnabled[1]
+          ? () {
+              adicionarCarrinho("Xbox One Do Godi Of Uar", "Preço 4550.00", 1);
+            }
+          : null,
+      style: ElevatedButton.styleFrom(
+        primary: const Color(0xFFB10C43),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+      ),
+      child: const Text('Mostrar Produto 2'),
+    );
+  }
+
+  Widget buildbotao2() {
+    return ElevatedButton(
+      onPressed: buttonEnabled[2]
+          ? () {
+              adicionarCarrinho("Planeta Terra", "1,999,999,999,999.00", 2);
+            }
+          : null,
+      style: ElevatedButton.styleFrom(
+        primary: const Color(0xFFB10C43),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+      ),
+      child: const Text('Mostrar Produto 3'),
+    );
+  }
 
   void mostrarPopOut() {
     showDialog(
@@ -116,7 +115,6 @@ Widget buildbotao2(){
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -130,27 +128,23 @@ Widget buildbotao2(){
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             for (var carrinho in carrinhos) ...[
-              CarrinhoIntelWidget(carrinho: carrinho, onExcluir: () {
-                removerCarrinho(carrinho.key, carrinho.index);
-              }),
+              CarrinhoIntelWidget(
+                  carrinho: carrinho,
+                  onExcluir: () {
+                    removerCarrinho(carrinho.key, carrinho.index);
+                  }),
             ],
-          
             buildbotao0(),
-
             Container(
               height: 12.0,
               color: const Color(0xFFEBDFCC),
-            ), 
-
+            ),
             buildbotao1(),
-
             Container(
               height: 12.0,
               color: const Color(0xFFEBDFCC),
-            ), 
-
+            ),
             buildbotao2(),
-            
             const SizedBox(height: 24.0),
             ElevatedButton(
               onPressed: compraRealizada ? null : mostrarPopOut,
@@ -173,7 +167,8 @@ class CarrinhoIntelWidget extends StatelessWidget {
   final CarrinhoIntel carrinho;
   final VoidCallback onExcluir;
 
-  const CarrinhoIntelWidget({super.key, required this.carrinho, required this.onExcluir});
+  const CarrinhoIntelWidget(
+      {super.key, required this.carrinho, required this.onExcluir});
 
   @override
   Widget build(BuildContext context) {
@@ -248,6 +243,9 @@ class CarrinhoIntel {
   final String preco;
   final int index;
 
-  CarrinhoIntel({required this.key, required this.nome, required this.preco, required this.index});
+  CarrinhoIntel(
+      {required this.key,
+      required this.nome,
+      required this.preco,
+      required this.index});
 }
-

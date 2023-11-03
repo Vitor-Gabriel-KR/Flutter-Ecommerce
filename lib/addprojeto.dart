@@ -19,19 +19,19 @@ class ProductScreen extends StatefulWidget {
 }
 
 class _ProductScreenState extends State<ProductScreen> {
-  String newProductImage = ""; // Variáveis para armazenar os dados do novo produto
+  String newProductImage =
+      ""; // Variáveis para armazenar os dados do novo produto
   String newProductName = "";
   String newProductPrice = "";
 
   @override
   Widget build(BuildContext context) {
-   if(newProductImage.isEmpty){
-
-             return buildAdicionarNovoProduto();
-   } else {
-            return buildProdutoContainer2(newProductImage, newProductName, newProductPrice);
-
-   }
+    if (newProductImage.isEmpty) {
+      return buildAdicionarNovoProduto();
+    } else {
+      return buildProdutoContainer2(
+          newProductImage, newProductName, newProductPrice);
+    }
   }
 
   Widget buildAdicionarNovoProduto() {
@@ -58,7 +58,8 @@ class _ProductScreenState extends State<ProductScreen> {
                       content: Column(
                         children: [
                           TextField(
-                            decoration: InputDecoration(labelText: 'URL da imagem'),
+                            decoration:
+                                InputDecoration(labelText: 'URL da imagem'),
                             onChanged: (value) {
                               setState(() {
                                 newProductImage = value;
@@ -66,7 +67,8 @@ class _ProductScreenState extends State<ProductScreen> {
                             },
                           ),
                           TextField(
-                            decoration: InputDecoration(labelText: 'Nome do Produto'),
+                            decoration:
+                                InputDecoration(labelText: 'Nome do Produto'),
                             onChanged: (value) {
                               setState(() {
                                 newProductName = value;
@@ -132,7 +134,8 @@ class _ProductScreenState extends State<ProductScreen> {
     );
   }
 
-  Widget buildProdutoContainer2(String imagem, String nomeProduto, String preco) {
+  Widget buildProdutoContainer2(
+      String imagem, String nomeProduto, String preco) {
     return Container(
       height: 300.0,
       width: 300.0,
@@ -161,7 +164,7 @@ class _ProductScreenState extends State<ProductScreen> {
               primary: Color.fromARGB(255, 255, 255, 255),
             ),
             onPressed: () {
-              // 
+              //
             },
             child: Text('Preço: R\$ $preco'),
           ),
