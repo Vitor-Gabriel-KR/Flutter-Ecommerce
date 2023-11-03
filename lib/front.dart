@@ -11,25 +11,14 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
-  List<bool> buttonEnabled = [true, true, true];
+ 
+  List<bool> buttonEnablede = [false, false, false];
 
+    
   @override
   Widget build(BuildContext context) {
     List<CarrinhoIntel> carrinhos = [];
 
-  void adicionarCarrinho(String nome, String preco, int index) {
-    setState(() {
-      carrinhos.add(CarrinhoIntel(key: UniqueKey(), nome: nome, preco: preco, index: index));
-      buttonEnabled[index] = false;
-    });
-  }
-
-  void removerCarrinho(Key key, int index) {
-    setState(() {
-      carrinhos.removeWhere((carrinho) => carrinho.key == key);
-      buttonEnabled[index] = true;
-    });
-  }
     return MaterialApp(
       home: Scaffold(
         backgroundColor: const Color(0xFFEBDFCC),
@@ -124,64 +113,77 @@ class _MyAppState extends State<MyApp> {
               ),
               buildFaixa(),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  SizedBox(
-                    width: 300.0,
-                    height: 30.0,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        //adicionarCarrinho()
-                      },
-                      style: ElevatedButton.styleFrom(
-                        primary: const Color(0xFFB10C43),
-                        onPrimary: Colors.white,
-                      ),
-                      child: const Text('Enviar para o carrinho'),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 300.0,
-                    height: 30.0,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        //
-                      },
-                      style: ElevatedButton.styleFrom(
-                        primary: const Color(0xFFB10C43),
-                        onPrimary: Colors.white,
-                      ),
-                      child: const Text('Enviar para o carrinho'),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 300.0,
-                    height: 30.0,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        //
-                      },
-                      style: ElevatedButton.styleFrom(
-                        primary: const Color(0xFFB10C43),
-                        onPrimary: Colors.white,
-                      ),
-                      child: const Text('Enviar para o carrinho'),
-                    ),
-                  ),
-                ],
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            SizedBox(
+              width: 300.0,
+              height: 30.0,
+              child: ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    buttonEnablede[0] = true;
+                  });
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: buttonEnablede[0] ? Colors.green : const Color(0xFFB10C43),
+                  onPrimary: Colors.white,
+                ),
+                child: const Text('Enviar para o carrinho'),
               ),
+            ),
+            SizedBox(
+              width: 300.0,
+              height: 30.0,
+              child: ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    buttonEnablede[1] = true;
+                  });
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: buttonEnablede[1] ? Colors.green : const Color(0xFFB10C43),
+                  onPrimary: Colors.white,
+                ),
+                child: const Text('Enviar para o carrinho'),
+              ),
+            ),
+            SizedBox(
+              width: 300.0,
+              height: 30.0,
+              child: ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    buttonEnablede[2] = true;
+                  });
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: buttonEnablede[2] ? Colors.green : const Color(0xFFB10C43),
+                  onPrimary: Colors.white,
+                ),
+                child: const Text('Enviar para o carrinho'),
+              ),
+            ),
+          ],
+        ),
+
               buildFaixa(),
               buildFaixa(),
             ],
           ),
         ),
+        
         floatingActionButton: Builder(
           builder: (context) {
             return FloatingActionButton(
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) =>  CarrinhoScreen(carrinhos:carrinhos),
-                ));
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => CarrinhoScreen(
+                      carrinhos: carrinhos,
+                      buttonEnablede: buttonEnablede, 
+                    ),
+                  ),
+                );
               },
               backgroundColor: Color(0xFFB10C43),
               child: const Icon(Icons.shopping_cart),

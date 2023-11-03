@@ -1,18 +1,30 @@
 import 'package:flutter/material.dart';
+import 'front.dart';
 
 class CarrinhoScreen extends StatefulWidget {
-  final carrinhos;
-  const CarrinhoScreen({super.key, required this.carrinhos});
+  final List<CarrinhoIntel> carrinhos;
+  final List<bool> buttonEnablede;
+
+  CarrinhoScreen({Key? key, required this.carrinhos, required this.buttonEnablede}) : super(key: key);
 
   @override
-  _CarrinhoScreenState createState() => _CarrinhoScreenState();
+  _CarrinhoScreenState createState() => _CarrinhoScreenState(buttonEnablede);
 }
-  List<CarrinhoIntel> carrinhos = [];
-  
-class _CarrinhoScreenState extends State<CarrinhoScreen> {
 
-  List<bool> buttonEnabled = [true, true, true];
+List<CarrinhoIntel> carrinhos = [];
+
+class _CarrinhoScreenState extends State<CarrinhoScreen> {
+  List<bool> buttonEnabled;
   bool compraRealizada = false;
+
+  _CarrinhoScreenState(this.buttonEnabled);
+
+  @override
+  void initState() {
+    super.initState();
+    buttonEnabled = List.from(widget.buttonEnablede);
+  }
+
 
 void adicionarCarrinho(String nome, String preco, int index) {
     setState(() {
@@ -79,13 +91,15 @@ Widget buildbotao2(){
               child: const Text('Mostrar Produto 3'),
             );
 }
+
+
   void mostrarPopOut() {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Parabéns!'),
-          content: const Text('Você comprou o/os itens com sucesso.'),
+          title: const Text('Finalmente terminei essa porra !'),
+          content: const Text('Da 2 ponto namoral ai professor .'),
           actions: [
             TextButton(
               onPressed: () {
