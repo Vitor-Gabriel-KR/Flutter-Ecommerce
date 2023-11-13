@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'drift.dart';
 
 class CarrinhoScreen extends StatefulWidget {
   final List<CarrinhoIntel> carrinhos;
   final List<bool> buttonEnablede;
 
-  CarrinhoScreen(
+  const CarrinhoScreen(
       {Key? key, required this.carrinhos, required this.buttonEnablede})
       : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api, no_logic_in_create_state
   _CarrinhoScreenState createState() => _CarrinhoScreenState(buttonEnablede);
 }
 
@@ -45,11 +47,11 @@ class _CarrinhoScreenState extends State<CarrinhoScreen> {
     return ElevatedButton(
       onPressed: buttonEnabled[0]
           ? () {
-              adicionarCarrinho("Geladeira Gamer Com Led", "Preço 3250.00", 0);
+              adicionarCarrinho(OutrosProdutos.nome, "Preço 3250.00", 0);
             }
           : null,
       style: ElevatedButton.styleFrom(
-        primary: const Color(0xFFB10C43),
+        backgroundColor: const Color(0xFFB10C43),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20.0),
         ),
@@ -62,11 +64,11 @@ class _CarrinhoScreenState extends State<CarrinhoScreen> {
     return ElevatedButton(
       onPressed: buttonEnabled[1]
           ? () {
-              adicionarCarrinho("Xbox One Do Godi Of Uar", "Preço 4550.00", 1);
+              adicionarCarrinho(OutrosProdutos2.nome, "Preço 4550.00", 1);
             }
           : null,
       style: ElevatedButton.styleFrom(
-        primary: const Color(0xFFB10C43),
+        backgroundColor: const Color(0xFFB10C43),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20.0),
         ),
@@ -79,11 +81,11 @@ class _CarrinhoScreenState extends State<CarrinhoScreen> {
     return ElevatedButton(
       onPressed: buttonEnabled[2]
           ? () {
-              adicionarCarrinho("Planeta Terra", "1,999,999,999,999.00", 2);
+              adicionarCarrinho(OutrosProdutos3.nome, "1,999,999,999,999.00", 2);
             }
           : null,
       style: ElevatedButton.styleFrom(
-        primary: const Color(0xFFB10C43),
+        backgroundColor: const Color(0xFFB10C43),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20.0),
         ),
@@ -97,8 +99,8 @@ class _CarrinhoScreenState extends State<CarrinhoScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Finalmente terminei essa porra !'),
-          content: const Text('Da 2 ponto namoral ai professor .'),
+          title: const Text('Você comprou o/os Produtos!'),
+          content: const Text('Parabens'),
           actions: [
             TextButton(
               onPressed: () {
@@ -149,7 +151,7 @@ class _CarrinhoScreenState extends State<CarrinhoScreen> {
             ElevatedButton(
               onPressed: compraRealizada ? null : mostrarPopOut,
               style: ElevatedButton.styleFrom(
-                primary: Colors.green,
+                backgroundColor: Colors.green,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
                 ),
@@ -216,7 +218,7 @@ class CarrinhoIntelWidget extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: onExcluir,
                   style: ElevatedButton.styleFrom(
-                    primary: const Color(0xFFB10C43),
+                    backgroundColor: const Color(0xFFB10C43),
                     shape: const CircleBorder(),
                   ),
                   child: const Icon(
