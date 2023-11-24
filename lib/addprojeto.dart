@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'drift.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,10 +24,12 @@ class ProductScreen extends StatefulWidget {
 }
 
 class _ProductScreenState extends State<ProductScreen> {
+  
   String newProductImage = "";
   String newProductName = "";
   String newProductPrice = "";
-
+  
+ 
   @override
   Widget build(BuildContext context) {
     if (newProductImage.isEmpty) {
@@ -141,7 +144,7 @@ class _ProductScreenState extends State<ProductScreen> {
   Widget buildProdutoContainer2(
       String imagem, String nomeProduto, String preco) {
     return Container(
-      height: 300.0,
+      height: 330.0,
       width: 300.0,
       decoration: BoxDecoration(
         color: const Color(0xFFB10C43),
@@ -172,8 +175,12 @@ class _ProductScreenState extends State<ProductScreen> {
             },
             child: Text('Preço: R\$ $preco'),
           ),
+          
+         
         ],
       ),
+      
     );
+    
   }
 }

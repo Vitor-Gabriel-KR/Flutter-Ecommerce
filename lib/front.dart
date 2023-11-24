@@ -12,11 +12,12 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   List<bool> buttonEnablede = [false, false, false];
-
+  bool validacao =true;
+  
   @override
   Widget build(BuildContext context) {
     List<CarrinhoIntel> carrinhos = [];
-
+    
     return MaterialApp(
       home: Scaffold(
         backgroundColor: const Color(0xFFEBDFCC),
@@ -25,6 +26,7 @@ class _MyAppState extends State<MyApp> {
           
           title: const Text('Shoppe Nerfada'),
           backgroundColor: const Color(0xFFB10C43),
+          
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -62,19 +64,15 @@ class _MyAppState extends State<MyApp> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  buildProdutoContainer(
-                    MeuProduto1.imagem,
-                    MeuProduto1.nome,
-                    '50.200.00',
-                  ),
-                  buildProdutoContainer(
-                    MeuProduto2.imagem,
-                    MeuProduto2.nome,
-                    '25.550.00',
-                  ),
-                  const ProductScreen()
+                 if(validacao) const ProductScreen(),
+                   if(validacao) const ProductScreen(),
+                 if(validacao) const ProductScreen(),
                 ],
+                
               ),
+               buildFaixa(),
+                
+         
               buildFaixa(),
               Container(
                 color: const Color(0xFFEBDFCC),
@@ -111,6 +109,7 @@ class _MyAppState extends State<MyApp> {
                 ],
               ),
               buildFaixa(),
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -233,6 +232,45 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
+  Widget buildProdutoContainer3(
+      String imagem, String nomeProduto, String preco,) {
+    return Container(
+      height: 330.0,
+      width: 300.0,
+      decoration: BoxDecoration(
+        color: const Color(0xFFB10C43),
+        borderRadius: BorderRadius.circular(20.0),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.network(
+            imagem,
+            width: 225,
+            height: 225,
+          ),
+          const SizedBox(height: 10),
+          Text(
+            nomeProduto,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+            ),
+          ),
+          TextButton(
+            style: TextButton.styleFrom(
+              foregroundColor: Colors.white,
+            ),
+            onPressed: () {},
+            child: Text('Preço: R\$ $preco'),
+          ),
+        ],
+      ),
+    );
+  }
+
+
+
 Widget buildCarrinhoIntel(String nome, String preco, BuildContext context) {
   return Column(
     children: [
@@ -303,3 +341,4 @@ Widget buildFaixa() {
     color: const Color(0xFFEBDFCC),
   );
 }
+

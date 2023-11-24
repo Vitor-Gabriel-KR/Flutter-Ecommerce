@@ -15,20 +15,21 @@ class Produtos extends Table {
 
 @DriftDatabase(tables: [Produtos])
 class AppDatabase extends _$AppDatabase {
-  AppDatabase() : super(_openConnection());
+  AppDatabase(QueryExecutor e) : super(e);
 
   @override
   int get schemaVersion => 1;
 
   // Método de inserção de produtos
-  Future insertProduto(Produto produto) => into(produtos).insert(produto);
+  Future<void> insertProduto(Produto produto) async {
+    await into(produtos).insert(produto);
+  }
 
   // Método de consulta de todos os produtos
-  Future<List<Produto>> getAllProdutos() => select(produtos).get();
-
- 
+  Future<List<Produto>> getAllProdutos() async {
+    return await select(produtos).get();
+  }
 }
-
 
 DatabaseConnection _openConnection() {
   return DatabaseConnection.delayed(Future(() async {
